@@ -59,27 +59,26 @@
   </style>
 </head>
 <body>
-  <h1>Bienvenue sur ma page</h1>
-  <h2>Suivez les comptes à rebours ci-dessous</h2>
+  <h1>IL TE RESTE</h1>
 
   <div class="countdown">
-    <h3>Chronomètre en jours :</h3>
-    <div class="time" id="countdown-days"></div>
+    <div class="time" id="countdown-months"></div>
   </div>
 
   <div class="countdown">
-    <h3>Chronomètre en semaines :</h3>
+    <h3>Ou:</h3>
     <div class="time" id="countdown-weeks"></div>
   </div>
 
   <div class="countdown">
-    <h3>Chronomètre en années :</h3>
-    <div class="time" id="countdown-years"></div>
+    <h3>Ou:</h3>
+    <div class="time" id="countdown-days"></div>
   </div>
-
+  <h2>Avant que bikou ai sa thèse !</h2>
+  
   <img src="combat.png" alt="Image descriptive">
-
-  <h2>Merci de votre visite !</h2>
+  <h2>QUE LE MEILLEUR GAGNE</h2>
+  <h2>(ça vaut pour toi aussi felix)</h2></h2>
 
   <script>
     const targetDate = new Date("2027-11-20T23:59:59").getTime();
@@ -89,12 +88,12 @@
       const timeLeft = targetDate - now;
 
       const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const weeks = (timeLeft / (1000 * 60 * 60 * 24 * 7)).toFixed(2);
-      const years = (timeLeft / (1000 * 60 * 60 * 24 * 365)).toFixed(2);
+      const weeks = Math.floor((timeLeft / (1000 * 60 * 60 * 24 * 7)));
+      const months = Math.floor((timeLeft / (1000 * 60 * 60 * 24 * 30)));
 
-      document.getElementById("countdown-days").innerText = `${days} jours restants`;
-      document.getElementById("countdown-weeks").innerText = `${weeks} semaines restantes`;
-      document.getElementById("countdown-years").innerText = `${years} années restantes`;
+      document.getElementById("countdown-days").innerText = `${days} jours `;
+      document.getElementById("countdown-weeks").innerText = `${weeks} semaines `;
+      document.getElementById("countdown-years").innerText = `${years} mois`;
     };
 
     setInterval(updateCountdowns, 1000);
