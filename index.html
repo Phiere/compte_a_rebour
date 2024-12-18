@@ -1,53 +1,101 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compte à Rebours</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        .countdown {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronomètres Différents</title>
+  <style>
+    @font-face {
+      font-family: 'Forky Regular';
+      src: url('fonts/forky-regular.woff2') format('woff2'),
+           url('fonts/forky-regular.woff') format('woff'),
+           url('fonts/forky-regular.ttf') format('truetype');
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1, h2 {
+      font-family: 'Forky Regular', Arial, sans-serif;
+      text-align: center;
+    }
+
+    .countdown {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .time {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
-    <div class="countdown" id="countdown"></div>
+  <h1>IL TE RESTE</h1>
 
-    <script>
-        // Fixer la date de fin du compte à rebours (ex: dans 5 jours)
-        const endDate = new Date("2025-11-20T00:00:00").getTime();
+  <!-- Chronomètre en semaines -->
+  <div class="countdown">
+    <div class="time" id="countdown-days"></div>
+  </div>
 
-        // Mettre à jour le compte à rebours toutes les secondes
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = endDate - now;
+  <!-- Chronomètre en années -->
+  <div class="countdown">
+    <h3>Ou :</h3>
+    <div class="time" id="countdown-weeks"></div>
+  </div>
 
-            // Calculer les jours, heures, minutes et secondes
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  <div class="countdown">
+    <h3>Ou :</h3>
+    <div class="time" id="countdown-months"></div>
+  </div>
 
-            // Afficher le résultat dans l'élément
-            document.getElementById("countdown").innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+  <h2>Avant que bikou ai sa thèse !</h2>
+  <img src="images/combat.png" alt="Image descriptive">
 
-            // Si le compte à rebours est terminé, afficher un message
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "Le compte à rebours est terminé";
-            }
-        }, 1000);
-    </script>
+  
+  <h2>QUE LE MEILLEUR GAGNE!</h2>
+  <h2>(Ca vaut pour toi aussi Felix)</h2>
+
+  <script>
+    // Définir la date cible
+    const targetDate = new Date("2027-11-20T23:59:59").getTime();
+
+    // Mettre à jour les chronomètres toutes les secondes
+    const updateCountdowns = () => {
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      // Calculer les différentes unités de temps
+      const days = Number(Math.floor(timeLeft / (1000 * 60 * 60 * 24)));
+      const weeks = Number(Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7)).toFixed(2));
+      const months = Number(Math.floor((timeLeft / (1000 * 60 * 60 * 24 * 30)).toFixed(2)));
+
+      // Mettre à jour les affichages
+      document.getElementById("countdown-days").innerText = `${days} jours`;
+      document.getElementById("countdown-weeks").innerText = `${weeks} semaines`;
+      document.getElementById("countdown-months").innerText = `${months} mois`;
+    };
+
+    // Lancer la mise à jour toutes les secondes
+    setInterval(updateCountdowns, 1000);
+
+    // Initialiser immédiatement
+    updateCountdowns();
+  </script>
 </body>
 </html>
