@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chronomètres Différents</title>
+  <title>Chronomètres Responsifs</title>
   <style>
     @font-face {
       font-family: 'Forky Regular';
@@ -20,12 +20,15 @@
       justify-content: flex-start;
       margin: 0;
       padding: 20px;
+      height: 100vh;
       background-color: #f4f4f4;
+      overflow-x: hidden;
     }
 
     h1, h2 {
       font-family: 'Forky Regular', Arial, sans-serif;
       text-align: center;
+      font-size: 5vw; /* Responsive */
     }
 
     .countdown {
@@ -34,67 +37,67 @@
     }
 
     .time {
-      font-size: 1.5rem;
+      font-size: 3vw; /* Responsive */
       margin: 10px 0;
     }
 
     img {
-      max-width: 100%;
+      max-width: 90%; /* Responsive images */
       height: auto;
       margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      h1, h2 {
+        font-size: 6vw; /* Réduction de la taille des titres */
+      }
+
+      .time {
+        font-size: 4vw; /* Réduction de la taille des chronomètres */
+      }
     }
   </style>
 </head>
 <body>
-  <h1>IL TE RESTE</h1>
+  <h1>Bienvenue sur ma page</h1>
+  <h2>Suivez les comptes à rebours ci-dessous</h2>
 
-  <!-- Chronomètre en semaines -->
   <div class="countdown">
+    <h3>Chronomètre en jours :</h3>
     <div class="time" id="countdown-days"></div>
   </div>
 
-  <!-- Chronomètre en années -->
   <div class="countdown">
-    <h3>Ou :</h3>
+    <h3>Chronomètre en semaines :</h3>
     <div class="time" id="countdown-weeks"></div>
   </div>
 
   <div class="countdown">
-    <h3>Ou :</h3>
-    <div class="time" id="countdown-months"></div>
+    <h3>Chronomètre en années :</h3>
+    <div class="time" id="countdown-years"></div>
   </div>
 
-  <h2>Avant que bikou ai sa thèse !</h2>
   <img src="combat.png" alt="Image descriptive">
 
-  
-  <h2>QUE LE MEILLEUR GAGNE!</h2>
-  <h2>(Ca vaut pour toi aussi Felix)</h2>
+  <h2>Merci de votre visite !</h2>
 
   <script>
-    // Définir la date cible
     const targetDate = new Date("2027-11-20T23:59:59").getTime();
 
-    // Mettre à jour les chronomètres toutes les secondes
     const updateCountdowns = () => {
       const now = new Date().getTime();
       const timeLeft = targetDate - now;
 
-      // Calculer les différentes unités de temps
-      const days = Number(Math.floor(timeLeft / (1000 * 60 * 60 * 24)));
-      const weeks = Number(Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7)).toFixed(2));
-      const months = Number(Math.floor((timeLeft / (1000 * 60 * 60 * 24 * 30)).toFixed(2)));
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const weeks = (timeLeft / (1000 * 60 * 60 * 24 * 7)).toFixed(2);
+      const years = (timeLeft / (1000 * 60 * 60 * 24 * 365)).toFixed(2);
 
-      // Mettre à jour les affichages
-      document.getElementById("countdown-days").innerText = `${days} jours`;
-      document.getElementById("countdown-weeks").innerText = `${weeks} semaines`;
-      document.getElementById("countdown-months").innerText = `${months} mois`;
+      document.getElementById("countdown-days").innerText = `${days} jours restants`;
+      document.getElementById("countdown-weeks").innerText = `${weeks} semaines restantes`;
+      document.getElementById("countdown-years").innerText = `${years} années restantes`;
     };
 
-    // Lancer la mise à jour toutes les secondes
     setInterval(updateCountdowns, 1000);
-
-    // Initialiser immédiatement
     updateCountdowns();
   </script>
 </body>
