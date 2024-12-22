@@ -25,10 +25,12 @@
       overflow-x: hidden;
     }
 
-    h1, h2 {
+    h1, h2, h3, .time {
       font-family: 'Forky Regular', Arial, sans-serif;
       text-align: center;
       font-size: 5vw; /* Responsive */
+      text-shadow: 2px 2px 0px #aaa, 4px 4px 0px #777, 6px 6px 0px #555;
+      color: #222;
     }
 
     .countdown {
@@ -48,7 +50,7 @@
     }
 
     @media (max-width: 768px) {
-      h1, h2 {
+      h1, h2, h3, .time {
         font-size: 6vw; /* Réduction de la taille des titres */
       }
 
@@ -78,7 +80,7 @@
   
   <img src="combat.png" alt="Image descriptive">
   <h2>QUE LE MEILLEUR GAGNE</h2>
-  <h2>(ça vaut pour toi aussi felix)</h2></h2>
+  <h2>(ça vaut pour toi aussi Félix)</h2>
 
   <script>
     const targetDate = new Date("2027-11-20T23:59:59").getTime();
