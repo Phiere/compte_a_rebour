@@ -4,14 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chronomètres Responsifs</title>
+  <link href="https://fonts.google.com/selection?categoryFilters=Appearance:%2FSeasonal%2FChristmas,%2FSeasonal%2FHanukkah,%2FSeasonal%2FKwanzaa;Feeling:%2FExpressive%2FArtistic" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Forky Regular';
-      src: url('fonts/forky-regular.woff2') format('woff2'),
-           url('fonts/forky-regular.woff') format('woff'),
-           url('fonts/forky-regular.ttf') format('truetype');
-    }
-
     body {
       font-family: Arial, sans-serif;
       display: flex;
@@ -25,20 +19,17 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, .time {
-      font-family: 'Forky Regular', Arial, sans-serif;
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', sans-serif;
       text-align: center;
       font-size: 5vw; /* Responsive */
-      text-shadow: 2px 2px 0px #aaa, 4px 4px 0px #777, 6px 6px 0px #555;
       color: #222;
-    }
-
-    .countdown {
-      text-align: center;
-      margin: 1px 0;
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
     .time {
+      font-family: 'Courier New', monospace; /* Police dédiée pour les chiffres */
       font-size: 3vw; /* Responsive */
       margin: 10px 0;
     }
@@ -50,7 +41,7 @@
     }
 
     @media (max-width: 768px) {
-      h1, h2, h3, .time {
+      h1, h2, h3 {
         font-size: 6vw; /* Réduction de la taille des titres */
       }
 
